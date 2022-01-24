@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Moq;
-using RestRequestLogger;
-using Xunit;
-
-namespace RequestLogging.Test
+﻿namespace RequestLogging.Test
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Logging;
+    using Moq;
+    using RestRequestLogger;
+    using Xunit;
+
     public class MiddlewareTest
     {
         public MiddlewareTest()
@@ -24,6 +24,16 @@ namespace RequestLogging.Test
             ILoggerMoq = new Mock<ILogger>();
             ILoggerFactoryMoq.Setup(m => m.CreateLogger(It.IsAny<string>())).Returns(ILoggerMoq.Object);
         }
+
+        public RestRequestLoggerOptions DefaultOptions { get; private set; }
+
+        public Mock<ILoggerFactory> ILoggerFactoryMoq { get; private set; }
+
+        public Mock<ILogger> ILoggerMoq { get; private set; }
+
+        public Mock<RequestDelegate> NextMoq { get; private set; }
+
+        internal Mock<HttpLogger> HttpLoggerMoq { get; private set; }
 
         [Fact]
         public async Task SkipsLoggingIfDebugIsDisabled()
@@ -40,11 +50,5 @@ namespace RequestLogging.Test
             HttpLoggerMoq.Verify(l => l.LogRequestAsync(It.IsAny<HttpContext>()), Times.Never);
             HttpLoggerMoq.Verify(l => l.LogResponseAsync(It.IsAny<HttpContext>()), Times.Never);
         }
-
-        public Mock<RequestDelegate> NextMoq { get; private set; }
-        public RestRequestLoggerOptions DefaultOptions { get; private set; }
-        internal Mock<HttpLogger> HttpLoggerMoq { get; private set; }
-        public Mock<ILoggerFactory> ILoggerFactoryMoq { get; private set; }
-        public Mock<ILogger> ILoggerMoq { get; private set; }
     }
 }

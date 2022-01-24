@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace RestRequestLogger
+﻿namespace RestRequestLogger
 {
     public class RestRequestLoggerOptions
     {

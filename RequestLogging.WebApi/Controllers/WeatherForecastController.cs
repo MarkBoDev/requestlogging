@@ -1,6 +1,5 @@
+﻿namespace RequestLogging.WebApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
-
-namespace RequestLogging.WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]

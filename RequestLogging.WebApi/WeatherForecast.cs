@@ -1,4 +1,4 @@
-namespace RequestLogging.WebApi;
+﻿namespace RequestLogging.WebApi;
 
 public class WeatherForecast
 {

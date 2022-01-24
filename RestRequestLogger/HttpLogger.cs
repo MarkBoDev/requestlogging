@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
-[assembly: InternalsVisibleTo("RequestLogging.Test")]
+﻿[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DynamicProxyGenAssembly2")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("RequestLogging.Test")]
 namespace RestRequestLogger
 {
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Http;
+
     internal class HttpLogger
     {
         internal virtual async Task LogRequestAsync(HttpContext context)
