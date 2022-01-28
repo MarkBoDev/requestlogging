@@ -19,7 +19,7 @@
             NextMoq.Setup(n => n.Invoke(It.IsAny<HttpContext>())).Returns(Task.CompletedTask);
 
             DefaultOptions = new RestRequestLoggerOptions();
-            HttpLoggerMoq = new Mock<HttpLogger>();
+            HttpLoggerMoq = new Mock<HttpLogger>(DefaultOptions);
             ILoggerFactoryMoq = new Mock<ILoggerFactory>();
             ILoggerMoq = new Mock<ILogger>();
             ILoggerFactoryMoq.Setup(m => m.CreateLogger(It.IsAny<string>())).Returns(ILoggerMoq.Object);
