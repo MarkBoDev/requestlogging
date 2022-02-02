@@ -6,6 +6,7 @@
         ContentType,
         StatusCode,
         Path,
-        QueryString
+        QueryString,
+        ContentLength
     }
 }
