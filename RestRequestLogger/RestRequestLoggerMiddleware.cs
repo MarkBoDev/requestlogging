@@ -26,11 +26,11 @@
 
         private async Task InvokeInternalAsync(HttpContext context)
         {
-            await RestRequestLogger.LogRequestAsync(context);
+            await RestRequestLogger.LogRequestAsync(context, Logger);
 
             await Next(context);
 
-            await RestRequestLogger.LogResponseAsync(context);
+            await RestRequestLogger.LogResponseAsync(context, Logger);
         }
     }
 }
